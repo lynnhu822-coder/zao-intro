@@ -30,21 +30,22 @@ body{background:var(--ink);color:var(--snow);font-family:'Noto Sans TC',sans-ser
 .countdown-bar-num{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--ink);letter-spacing:1px;min-width:22px;text-align:center;}
 .countdown-bar-sep{color:rgba(0,0,0,.3);font-size:13px;}
 .countdown-bar-label{font-size:9px;color:rgba(0,0,0,.45);letter-spacing:1px;}
-.global-nav{position:fixed;top:36px;left:0;right:0;z-index:200;transition:background .4s;background:transparent;}
-.global-nav.scrolled{background:rgba(22,29,36,.97);backdrop-filter:blur(16px);}
-.nav-top{display:flex;justify-content:space-between;align-items:center;padding:20px 48px;position:relative;z-index:1;}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:4px;color:var(--snow);text-decoration:none;position:relative;z-index:1;}
-.nav-logo .ski{color:var(--brand);}
-.nav-top::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,53,64,.9) 0%,transparent 100%);pointer-events:none;}
-.nav-messenger{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--snow);border:1px solid rgba(245,243,239,.3);padding:9px 20px;text-decoration:none;transition:all .3s;position:relative;z-index:1;}
-.nav-messenger:hover{background:var(--brand);border-color:var(--brand);}
+/* NAV */
+nav { position:fixed; top:36px; left:0; right:0; z-index:100; padding:24px 48px; display:flex; justify-content:space-between; align-items:center;}
+nav::before { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(44,53,64,.9) 0%,transparent 100%); pointer-events:none; }
+.nav-logo { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:4px; color:var(--snow); text-decoration:none; position:relative; z-index:1; margin-right:auto; }
+.nav-links { display:flex; gap:32px; list-style:none; position:relative; z-index:1; }
+.nav-links a { font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(245,243,239,.75); text-decoration:none; transition:color .3s; }
+.nav-links a:hover { color:var(--snow); }
+.nav-cta { position:relative; z-index:1; font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:3px; color:var(--snow); border:1px solid rgba(245,243,239,.35); padding:10px 22px; text-decoration:none; transition:all .3s; }
+.nav-cta:hover { background:var(--brand); border-color:var(--brand); }
 
-/* ══ HAMBURGER ══ */
-.hamburger-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;position:relative;z-index:1;}
-.hamburger-btn span{display:block;width:22px;height:1.5px;background:var(--snow);transition:all .3s;}
-.hamburger-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-.hamburger-btn.open span:nth-child(2){opacity:0;}
-.hamburger-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+/* HAMBURGER */
+.hamburger-btn { display:flex; position:relative; z-index:1; background:none; border:none; cursor:pointer; padding:4px; flex-direction:column; gap:5px; }
+.hamburger-btn span { display:block; width:22px; height:1.5px; background:var(--snow); transition:all .3s; }
+.hamburger-btn.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+.hamburger-btn.open span:nth-child(2) { opacity:0; }
+.hamburger-btn.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
 .mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;width:100%;z-index:99;background:rgba(26,28,30,.97);backdrop-filter:blur(12px);flex-direction:column;padding:100px 32px 48px;gap:0;overflow-y:auto;transform:translateX(100%);transition:transform .35s ease;}
 @media(min-width:481px){.mobile-menu{width:min(33vw,320px);}}
 .mobile-menu.open{display:flex;transform:translateX(0);}
@@ -237,7 +238,6 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
 @media(max-width:768px){
   .countdown-bar{gap:8px;}
   .nav-top{padding:16px 20px;}
-  .nav-messenger{display:none;}
   .hero{height:100svh;}
   .hero-content{padding:0 24px 64px;}
   .scroll-hint{right:20px;}
@@ -259,6 +259,7 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
   .explore-grid{grid-template-columns:1fr 1fr;gap:3px;}
   .explore-card{aspect-ratio:4/5;}
   .explore-card.featured{grid-column:span 2;aspect-ratio:16/9;}
+  .video-section{padding:48px 20px !important;}
   .access-grid{grid-template-columns:1fr;}
   .cta-wrap{grid-template-columns:1fr;padding:40px 24px;}
   footer{flex-direction:column;gap:24px;text-align:center;padding:32px 24px;}
@@ -296,40 +297,40 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="https://www.iski.com.tw/login" class="mobile-menu-link">會員中心</a>
+  <a href="/login" class="mobile-menu-link">會員中心</a>
   <div class="mobile-menu-section">
     <p class="mobile-menu-label">雪上課程</p>
-    <a href="https://www.iski.com.tw/index.php?route=common/snowing_yuzawa&category=group" class="mobile-menu-link">越後湯澤 團體課</a>
-    <a href="https://www.iski.com.tw/index.php?route=common/snowing_yuzawa&category=private" class="mobile-menu-link">越後湯澤 私人課</a>
-    <a href="https://www.iski.com.tw/index.php?route=common/snowing_hokkaido&category=teine_private" class="mobile-menu-link">手稻 私人課</a>
-    <a href="https://www.iski.com.tw/index.php?route=common/snowing_hokkaido&category=rusutsu_private" class="mobile-menu-link">留壽都 私人課</a>
-    <a href="https://www.iski.com.tw/index.php?route=common/snowing_zao&category=private" class="mobile-menu-link">藏王 私人課</a>
-    <a href="https://www.iski.com.tw/index.php?route=common/snowing_course&course=4" class="mobile-menu-link">CAMP 課</a>
+    <a href="/index.php?route=common/snowing_yuzawa&category=group" class="mobile-menu-link">越後湯澤 團體課</a>
+    <a href="/index.php?route=common/snowing_yuzawa&category=private" class="mobile-menu-link">越後湯澤 私人課</a>
+    <a href="/index.php?route=common/snowing_hokkaido&category=teine_private" class="mobile-menu-link">手稻 私人課</a>
+    <a href="/index.php?route=common/snowing_hokkaido&category=rusutsu_private" class="mobile-menu-link">留壽都 私人課</a>
+    <a href="/index.php?route=common/snowing_zao&category=private" class="mobile-menu-link">藏王 私人課</a>
+    <a href="/index.php?route=common/snowing_course&course=4" class="mobile-menu-link">CAMP 課(即將開放)</a>
   </div>
   <div class="mobile-menu-section">
     <p class="mobile-menu-label">雪場介紹</p>
-    <a href="https://www.iski.com.tw/ski-school/yuzawa&category=info" class="mobile-menu-link">越後湯澤</a>
-    <a href="https://www.iski.com.tw/ski-school/hokkaido&category=info" class="mobile-menu-link">北海道手稻</a>
-    <a href="https://www.iski.com.tw/index.php?route=common/snowing_hokkaido&category=rusutsu" class="mobile-menu-link">北海道留壽都</a>
+    <a href="/ski-school/yuzawa&category=info" class="mobile-menu-link">越後湯澤</a>
+    <a href="/ski-school/hokkaido&category=info" class="mobile-menu-link">北海道手稻</a>
+    <a href="/index.php?route=common/snowing_zao" class="mobile-menu-link">東北藏王</a>
   </div>
   <div class="mobile-menu-section">
     <p class="mobile-menu-label">服務</p>
     <a href="https://www.iski-select.com.tw/pages/rental" target="_blank" class="mobile-menu-link">日本雪具租借 &amp; 倉儲</a>
-    <a href="https://www.iski.com.tw/" class="mobile-menu-link">iSKI 首頁</a>
+    <a href="/" class="mobile-menu-link">iSKI 首頁</a>
   </div>
-  <a href="https://www.iski.com.tw/index.php?route=common/snowing_yuzawa&category=group" class="mobile-menu-cta" target="_blank">立即報名 團體課程 →</a>
+  <a href="/index.php?route=common/snowing_buy" class="mobile-menu-cta" target="_blank">立即報名 團體課程 →</a>
 </div>
 
 <!-- NAV -->
-<nav class="global-nav" id="globalNav">
-  <div class="nav-top">
-    <a href="https://www.iski.com.tw/" class="nav-logo" style="display:flex;align-items:center;"><img src="https://stage.iski.com.tw/image/catalog/snowing/01.home/link/M/M_Website_home logo01.png" alt="iSKI" style="height:28px;"></a>
-    <div style="display:flex;align-items:center;gap:16px;position:relative;z-index:1;">
-      <a href="http://m.me/iSKIclub2019" class="nav-messenger" target="_blank">聯絡客服</a>
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="選單" onclick="toggleMobileMenu()">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<nav>
+  <a href="/" class="nav-logo" target="_blank"><img src="https://stage.iski.com.tw/image/catalog/snowing/01.home/link/M/M_Website_home logo01.png" alt="iSKI" style="height:28px;width:auto;display:block;"></a>
+  <ul class="nav-links">
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;position:relative;z-index:1;">
+    <a href="index.php?route=common/snowing_buy" class="nav-cta" target="_blank">聯絡客服</a>
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="選單" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -482,17 +483,12 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
         <p class="feat-d">32座纜車全部相連，一張共通券玩上好幾天不重複。</p>
         <div class="feat-n">04</div>
       </div>
-      <div class="feat feat-wide">
-        <h4 class="feat-t">千年溫泉街 × 山形美食</h4>
-        <p class="feat-d">卸下雪具步行即達。強酸性美肌之湯、山形牛、芋煮鍋——這一天，從山頂到餐桌。</p>
-        <div class="feat-n">05</div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- VIDEO -->
-<section style="background:var(--ink-deep);padding:80px 60px;border-top:1px solid rgba(245,243,239,.06);">
+<section class="video-section" style="background:var(--ink-deep);padding:80px 60px;border-top:1px solid rgba(245,243,239,.06);">
   <div style="max-width:1200px;margin:0 auto;">
     <p class="section-label">OFFICIAL VIDEO</p>
     <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,52px);letter-spacing:.1em;color:var(--snow);margin-bottom:32px;" class="reveal">感受蔵王的魅力</h3>
@@ -697,8 +693,7 @@ document.querySelectorAll('a,button,.explore-card,.feat,.stat,.access-card').for
 })();
 
 // Nav scroll
-const nav = document.getElementById('globalNav');
-window.addEventListener('scroll', ()=>{ nav.classList.toggle('scrolled', window.scrollY > 60); });
+
 
 // Hamburger
 function toggleMobileMenu(){
